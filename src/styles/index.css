@@ -1,0 +1,15 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html { scroll-behavior: smooth; }
+  body { margin: 0; font-family: 'DM Sans', sans-serif; -webkit-font-smoothing: antialiased; }
+  ::selection { background: #d9c18d; color: #28251f; }
+}
+
+@layer components {
+  .section-kicker { @apply mb-4 flex items-center gap-3 text-[10px] font-semibold uppercase tracking-[.22em] text-gold-700; }
+  .section-kicker::before { content: ''; @apply h-px w-8 bg-gold-500; }
+  .section-title { @apply font-display text-4xl leading-[1.15] tracking-[-.025em] sm:text-5xl; }
+}
