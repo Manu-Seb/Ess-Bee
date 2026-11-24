@@ -1,20 +1,26 @@
 import { ArrowUpRight } from 'lucide-react'
+import blackPepper from '../../../static/black_pep1.jpg'
+import Reveal from '../ui/Reveal.jsx'
 
 export default function Intro() {
   return (
-    <section id="about" className="relative mx-auto grid max-w-7xl gap-12 px-6 py-24 lg:grid-cols-[.8fr_1fr] lg:gap-24 lg:px-10 lg:py-32">
-      <div className="relative min-h-[340px] overflow-hidden rounded-[2px] bg-[#e9e2d3]">
-        <div className="absolute inset-5 border border-white/70" />
-        <div className="absolute left-[18%] top-[13%] h-[90%] w-[48%] rounded-t-full bg-gradient-to-br from-[#d7c69f] via-[#f5f0e5] to-[#b69555] shadow-2xl" />
-        <div className="absolute bottom-[-17%] right-[10%] h-[74%] w-[36%] rounded-t-full bg-gradient-to-br from-[#fffdf8] to-[#d3c5a7]" />
-        <div className="absolute bottom-8 left-8 text-xs uppercase tracking-[.24em] text-ink/50">Lorem ipsum</div>
-      </div>
-      <div className="flex flex-col justify-center">
-        <p className="section-kicker">Lorem ipsum dolor sit</p>
-        <h2 className="section-title">Lorem ipsum<br />dolor sit amet.</h2>
-        <p className="mt-6 max-w-lg text-sm leading-7 text-ink/60">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean lacinia bibendum nulla sed consectetur. Maecenas faucibus mollis interdum, sed posuere consectetur est at lobortis.</p>
-        <p className="mt-4 max-w-lg text-sm leading-7 text-ink/60">Integer posuere erat a ante venenatis dapibus posuere velit aliquet. Donec ullamcorper nulla non metus auctor fringilla.</p>
-        <a href="#services" className="mt-8 inline-flex w-fit items-center gap-2 border-b border-gold-500 pb-2 text-sm font-semibold text-ink transition hover:text-gold-700">Lorem ipsum <ArrowUpRight size={15} /></a>
+    <section id="about" className="bg-paper-warm">
+      <div className="about-layout mx-auto max-w-[1200px] px-5 py-16 lg:px-8 lg:py-32">
+        <Reveal className="about-eyebrow"><p className="section-kicker">Rooted in Kanjirappally</p></Reveal>
+        <Reveal className="about-heading"><h2 className="section-title text-balance">A taste of Kottayam.</h2></Reveal>
+        <Reveal className="about-image">
+          <div className="about-photo-frame group">
+            <div className="relative z-10 overflow-hidden rounded-card">
+              <img src={blackPepper} alt="Premium black peppercorns" className="warm-photo transition duration-500 group-hover:scale-[1.04]" loading="lazy" />
+              <div className="pointer-events-none absolute inset-0 rounded-card bg-gradient-to-t from-black/30 via-transparent to-black/5" />
+            </div>
+          </div>
+        </Reveal>
+        <Reveal className="about-copy">
+          <p className="max-w-[60ch] text-[16px] leading-[1.65] text-body sm:text-[17px] sm:leading-[1.7]">Ess Bee is based in Kanjirappally, Kottayam, a region known for its rich spice-growing heritage. We bring the character of Kerala spices to every batch.</p>
+          <p className="mt-4 max-w-[60ch] text-[16px] leading-[1.65] text-body sm:text-[17px] sm:leading-[1.7]">Our focus is on premium black pepper and cardamom, graded with care for customers seeking dependable export quality.</p>
+        </Reveal>
+        <Reveal className="about-link"><a href="#products" className="inline-flex min-h-11 w-fit items-center gap-2 border-b border-gold pb-2 text-sm font-semibold text-ink transition hover:text-gold-dark">Meet our products <ArrowUpRight size={15} /></a></Reveal>
       </div>
     </section>
   )

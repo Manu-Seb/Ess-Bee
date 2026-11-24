@@ -1,28 +1,38 @@
 import { ArrowDown, ArrowUpRight } from 'lucide-react'
+import { useEffect, useState } from 'react'
+import cardamomImage from '../../../static/cardamom.jpg'
 
 export default function Hero() {
+  const [scrollY, setScrollY] = useState(0)
+
+  useEffect(() => {
+    const onScroll = () => setScrollY(window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 0 : window.scrollY)
+    window.addEventListener('scroll', onScroll, { passive: true })
+    return () => window.removeEventListener('scroll', onScroll)
+  }, [])
+
   return (
-    <section id="top" className="relative min-h-[760px] overflow-hidden bg-[#f7f4ed] pt-32 lg:min-h-[790px]">
-      <div className="absolute -right-32 -top-28 h-[620px] w-[620px] rounded-full border border-gold-300/50" />
-      <div className="absolute -right-10 -top-5 h-[470px] w-[470px] rounded-full border border-gold-300/40" />
-      <div className="absolute right-[-4rem] top-28 h-[500px] w-[500px] rounded-full bg-gradient-to-br from-gold-100 via-[#eadbb8] to-[#bc9b5b] opacity-80" />
-      <div className="absolute right-[5%] top-36 h-[490px] w-[340px] rounded-[48%_48%_8px_8px] border-[10px] border-white/45 bg-gradient-to-b from-white/60 to-transparent shadow-soft lg:right-[12%] lg:w-[390px]" />
-      <div className="absolute right-[13%] top-52 h-[360px] w-[170px] rounded-t-full border border-white/60 bg-gradient-to-b from-white/60 to-gold-300/20 lg:right-[21%] lg:w-[210px]" />
-      <div className="absolute right-[7%] top-[29rem] h-20 w-20 rounded-full border border-white/70 bg-white/30 backdrop-blur-sm lg:right-[10%]" />
-      <div className="relative mx-auto grid max-w-7xl items-center px-6 pb-24 pt-20 lg:grid-cols-[1fr_.8fr] lg:px-10 lg:pb-28 lg:pt-24">
-        <div className="max-w-2xl">
-          <p className="mb-7 flex items-center gap-3 text-[11px] font-semibold uppercase tracking-[.24em] text-gold-700"><span className="h-px w-9 bg-gold-500" />Lorem ipsum dolor sit amet</p>
-          <h1 className="font-display text-5xl leading-[1.08] tracking-[-.035em] sm:text-6xl lg:text-[76px]">Lorem ipsum<br /><span className="italic text-emerald-700">dolor sit</span> amet.</h1>
-          <p className="mt-7 max-w-md text-base leading-7 text-ink/60">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Integer posuere erat a ante venenatis dapibus posuere velit aliquet.</p>
-          <div className="mt-9 flex flex-wrap items-center gap-5">
-            <a href="#about" className="inline-flex items-center gap-3 rounded-full bg-emerald-700 px-6 py-4 text-sm font-semibold text-white shadow-lg shadow-emerald-700/20 transition hover:-translate-y-0.5 hover:bg-emerald-800">Lorem ipsum <ArrowUpRight size={16} /></a>
-            <a href="#services" className="text-sm font-medium text-ink/65 transition hover:text-gold-700">Lorem ipsum <span className="ml-1">↗</span></a>
+    <section id="top" className="relative overflow-hidden bg-alternate">
+      <div className="relative mx-auto grid max-w-[1200px] items-center gap-8 px-5 pb-10 pt-8 lg:min-h-[660px] lg:grid-cols-[1fr_.85fr] lg:gap-10 lg:px-8 lg:py-16">
+        <div className="relative z-10 max-w-[590px] py-2 lg:py-8">
+          <p className="section-kicker">Premium spices from Kerala</p>
+          <h1 className="max-w-[600px] text-balance font-display text-[clamp(40px,11vw,52px)] leading-[1.05] tracking-[-.02em] lg:text-[clamp(62px,5.5vw,69px)]">Ess Bee<br /><span className="italic text-gold">Pepper &amp; Cardamom</span></h1>
+          <p className="mt-4 max-w-[60ch] text-[16px] leading-[1.65] text-body sm:text-[17px] sm:leading-[1.7] lg:mt-6">Premium black pepper and cardamom from Kanjirappally, Kottayam. Carefully graded for export quality and sourced with EUDR certification.</p>
+          <div className="mt-6 flex flex-col items-stretch gap-3 lg:mt-8 lg:flex-row lg:items-center lg:gap-5">
+            <a href="#products" className="group inline-flex min-h-[52px] items-center justify-center gap-3 rounded-full bg-gold-dark px-6 text-sm font-semibold text-white shadow-primary transition hover:-translate-y-0.5 hover:bg-gold-hover active:scale-[.98] lg:justify-start">Explore our spices <ArrowUpRight className="transition-transform group-hover:translate-x-[3px]" size={16} /></a>
+            <a href="#about" className="inline-flex min-h-11 items-center justify-center text-sm font-semibold text-body underline decoration-gold/50 underline-offset-4 transition hover:text-gold-dark">Our story <span className="ml-1">↗</span></a>
           </div>
-          <div className="mt-16 flex items-center gap-4 text-[10px] uppercase tracking-[.2em] text-ink/40"><span className="flex h-9 w-9 items-center justify-center rounded-full border border-ink/15"><ArrowDown size={14} /></span>Lorem ipsum dolor</div>
+          <div className="mt-10 hidden items-center gap-4 text-[11px] font-semibold uppercase tracking-[.2em] text-cardamom lg:flex"><span className="flex h-9 w-9 items-center justify-center rounded-full border border-cardamom/25"><ArrowDown size={14} /></span>Grown in Kerala</div>
         </div>
-        <div className="hidden lg:block" aria-hidden="true" />
+        <div className="relative mx-auto aspect-[4/5] w-[85vw] max-w-[440px] lg:aspect-auto lg:h-[550px] lg:w-full lg:max-w-[490px]" aria-label="Ess Bee spices">
+          <div className="absolute right-0 top-1/2 h-[72%] w-[80%] -translate-y-1/2 rounded-full bg-gold/20 shadow-soft" />
+          <div className="absolute right-[4%] top-1/2 z-10 h-[87%] w-[92%] -translate-y-1/2 overflow-hidden rounded-t-[48%] rounded-b-xl border-[9px] border-card-white shadow-lift lg:right-[8%] lg:w-[69%]" style={{ transform: `translateY(calc(-50% + ${Math.min(scrollY * 0.055, 34)}px))` }}>
+            <img src={cardamomImage} alt="Fresh green cardamom pods" className="warm-photo h-full w-full object-cover object-center" />
+            <div className="absolute inset-0 bg-gradient-to-t from-cardamom/35 via-transparent to-gold/10 mix-blend-multiply" />
+          </div>
+          <div className="absolute -right-[2%] top-0 z-0 h-14 w-14 rounded-full border border-card-white bg-gold/70 shadow-soft sm:h-16 sm:w-16" />
+        </div>
       </div>
-      <div className="absolute bottom-0 left-0 h-20 w-full bg-gradient-to-t from-paper to-transparent" />
     </section>
   )
 }
